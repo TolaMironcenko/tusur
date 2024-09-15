@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-Wall
+CXXFLAGS=-Wall -std=c++11
 SOURCES=src/main.cpp
 TARGET=bin/main
 
@@ -14,5 +14,6 @@ build:
 	$(CXX) -o $(TARGET) $(SOURCES) $(CXXFLAGS)
 
 clean:
-	rm -rv bin
-	
+	@if [ -d bin ]; then \
+		rm -rv bin; \
+	fi
