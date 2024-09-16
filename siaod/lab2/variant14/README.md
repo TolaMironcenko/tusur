@@ -38,10 +38,10 @@ make
 
 ```shell
 ❯ make
-g++ -o bin/main src/main.cpp -Wall -std=c++11
+g++ -o bin/main src/main.cpp -Wall -std=c++11 -Wno-sign-compare
 ❯ ./bin/main
 Spanning tree edges:
-0 - 3
 0 - 1
-3 - 2
+0 - 2
+1 - 3
 ```

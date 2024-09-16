@@ -20,16 +20,14 @@ std::vector<std::vector<int>> readIncidenceMatrix(std::string filename) {
     int vertices, edges;
 
     infile >> vertices >> edges; // Чтение количества вершин и рёбер
-    std::vector<std::vector<int>> incidenceMatrix;
+    std::vector<std::vector<int>> incidenceMatrix(vertices, std::vector<int>(edges, 0));
 
-    for (int i = 0; i < edges; i++) {
-        std::vector<int> tmpvec;
-        for (int j = 0; j < vertices; j++) {
+    for (int i = 0; i < vertices; i++) {
+        for (int j = 0; j < edges; j++) {
             int tmp;
             infile >> tmp;
-            tmpvec.push_back(tmp);
+            incidenceMatrix[i][j] = tmp;
         }
-        incidenceMatrix.push_back(tmpvec);
     }
 
     infile.close();
@@ -42,7 +40,7 @@ std::vector<int> getAdjacentVertices(const std::vector<std::vector<int>>& incide
     for (int i = 0; i < edges; ++i) {
         if (incidenceMatrix[vertex][i] == 1) {
             for (int j = 0; j < incidenceMatrix.size(); ++j) {
-                if (incidenceMatrix[i][j] == 1 && j != vertex) {
+                if (incidenceMatrix[j][i] == 1 && j != vertex) {
                     adjacent.push_back(j);
                 }
             }
