@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-Wall -std=c++11 -Wno-sign-compare
+CXXFLAGS=-Wall -std=c++11
 SOURCES=src/main.cpp
 TARGET=bin/main
 
